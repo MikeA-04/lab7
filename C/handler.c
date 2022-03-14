@@ -3,8 +3,11 @@
 void send_signal(int sig) {
     // TODO 5-1: send SIGTSTP signal to ./sender program
     // 1. find ./sender program's pid
-    // 2. send SIGTSTP signal to its pid 	
+
+    // 2. send SIGTSTP signal to its pid 
+
     // 3. call this function at the bottom of signal_handler 
+
 }
 
 // signal handler 
@@ -28,6 +31,13 @@ int main() {
         scanf("%s", buff);
         if (strcmp(buff, "exit") == 0) {
             exit(0);
+        } else if (strcmp(buff, "^C") == 0) {
+            write(1, "Ctrl + C\n", 9);
+        } else if (strcmp(buff, "^Z") == 0) {
+            write(1, "Ctrl + Z\n", 9);
+        }
+        else {
+
         }
     }
 
