@@ -16,7 +16,7 @@ long int find_pid(char* program) {
             // can help us find the program name. First, read /proc's man page and 
             // then create an absolute path (based on "/proc/%s/[file]" template) 
             // and store it in "path" variable:
-            // snprintf(path, ...)
+            snprintf(path, 1024, "/proc/%s/%s", getpid(), program);
 
             // open the special file
             FILE* special_file = fopen(path, "r");
@@ -26,7 +26,7 @@ long int find_pid(char* program) {
             }
 
             // TODO 3-1: populate info struct for the file (i.e. path).
-            // use stat()
+            stat(path);
 
             if (fgets(line, 1024, special_file) != NULL) {
 
